@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\PhotoController;
+
+use App\Http\Controllers\SubscriberController;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +19,23 @@ use App\Http\Controllers\CursoController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 /* Cursos */
-Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
-Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
-Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
-Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');
-Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
-Route::put('cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
-Route::delete('cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
+Route::resource('cursos', CursoController::class);
+
+/* Nosotros */
+Route::view('nosotros', 'nosotros')->name('nosotros');
+
+/* Email */
+Route::get('send-mail', function () {
+   
+    $details = [
+        'title' => 'Mail from Online Web Tutor',
+        'body' => 'Test mail sent by Laravel 8 using SMTP.'
+    ];
+   
+    Mail::to('gestorsistemaslesp@gmail.com')->send(new \App\Mail\MyTestMail($details));
+   
+    dd("Email is Sent, please check your inbox.");
+  });
