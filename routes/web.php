@@ -6,7 +6,8 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\PhotoController;
 
 use App\Http\Controllers\SubscriberController;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ContactanosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,14 +29,5 @@ Route::resource('cursos', CursoController::class);
 Route::view('nosotros', 'nosotros')->name('nosotros');
 
 /* Email */
-Route::get('send-mail', function () {
-   
-    $details = [
-        'title' => 'Mail from Online Web Tutor',
-        'body' => 'Test mail sent by Laravel 8 using SMTP.'
-    ];
-   
-    Mail::to('gestorsistemaslesp@gmail.com')->send(new \App\Mail\MyTestMail($details));
-   
-    dd("Email is Sent, please check your inbox.");
-  });
+Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');

@@ -5,8 +5,9 @@
 </head>
 <body>
   
-    <h1>{{ $details['title'] }}</h1>
-    <p>{{ $details['body'] }}</p>
+    <h1><strong>Titulo:</strong> {{ $details['title'] }}</h1>
+    <p><strong>Contenido:</strong>{{ $details['body'] }}</p>
+    <p><strong>De:</strong>{{ $details['correo']}} </p>
    
     <p>Thank you</p>
 </body>

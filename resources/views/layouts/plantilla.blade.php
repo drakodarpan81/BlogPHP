@@ -13,7 +13,7 @@
 
 <body>
 
-    @include('layouts.extensiones.header')
+    @include('layouts.partials.header')
     
     <div class="container bg-slate-400">
         @yield('content')

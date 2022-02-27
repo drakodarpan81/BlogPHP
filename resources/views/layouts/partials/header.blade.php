@@ -12,8 +12,9 @@
             <li>
                 <a href=" {{route('nosotros')}} ">Nosotros</a>
             </li>
+
             <li>
-                <a href=" {{route('nosotros')}} ">Contactanos</a>
+                <a href=" {{route('contactanos.index')}} ">Contactanos</a>
             </li>
         </ul>
     </nav>

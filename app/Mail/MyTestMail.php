@@ -21,7 +21,7 @@ class MyTestMail extends Mailable
     {
         $this->details = $details;
     }
-
+ 
     /**
      * Build the message.
      *
